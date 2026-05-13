@@ -40,21 +40,25 @@ Each layer has a single responsibility. Spring Security sits as a filter across 
 ## 📦 Project Structure
 
 ```
-com/coder/
-├── config/       # Spring MVC, Hibernate, and Security beans configuration
-├── controller/   # Role-scoped HTTP handlers (admin / recruiter / jobSeeker)
-├── service/      # Business logic — payment, mail, job matching, user management
-├── dao/          # Hibernate-backed data access per entity
-├── model/        # JPA/Hibernate entity classes
-├── form/         # Spring MVC form-binding models
-└── util/         # Shared utilities (date arithmetic, formatters)
+src/com/
+├── app/              # Application entry point and base configuration
+└── jobportal/
+    ├── config/       # Spring MVC, Hibernate, and Security beans configuration
+    ├── controller/   # Role-scoped HTTP handlers (admin / recruiter / jobSeeker)
+    ├── service/      # Business logic — payment, mail, job matching, user management
+    ├── dao/          # Hibernate-backed data access per entity
+    ├── model/        # JPA/Hibernate entity classes
+    ├── form/         # Spring MVC form-binding models
+    └── util/         # Shared utilities (date arithmetic, formatters)
 
-WebContent/WEB-INF/
-├── views/
-│   ├── admin/      # Admin panel templates
-│   ├── recruiter/  # Recruiter dashboard templates
-│   └── jobSeeker/  # Job seeker portal templates
-└── lib/            # All JAR dependencies
+WebContent/
+├── resources/        # Static assets (CSS, JS, images)
+└── WEB-INF/
+    ├── views/
+    │   ├── admin/      # Admin panel JSP templates
+    │   ├── recruiter/  # Recruiter dashboard JSP templates
+    │   └── jobSeeker/  # Job seeker portal JSP templates
+    └── lib/            # JAR dependencies
 ```
 
 ---
@@ -105,7 +109,7 @@ During registration, job seekers declare a preferred category (e.g. *Java Develo
 
 ## 🚀 Getting Started
 
-**1. Database** — import the SQL schema into MySQL and configure credentials in `com/coder/config/`.
+**1. Database** — import the SQL schema into MySQL and configure credentials in `src/com/jobportal/config/`.
 
 **2. PayPal** — add your `CLIENT_ID`, `CLIENT_SECRET`, and set `MODE=sandbox` in the payment service config.
 
